@@ -1,19 +1,32 @@
 {
-  "name": "ships.io",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AdrienHeisch/ships.io.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AdrienHeisch/ships.io/issues"
-  },
-  "homepage": "https://github.com/AdrienHeisch/ships.io#readme"
+    "name": "ships.io",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack && echo Opening Firefox tab... && start firefox \"http://localhost:8080/\" && node ./dist/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AdrienHeisch/ships.io.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/AdrienHeisch/ships.io/issues"
+    },
+    "homepage": "https://github.com/AdrienHeisch/ships.io#readme",
+    "dependencies": {
+        "express": "^4.16.3",
+        "fs": "0.0.1-security"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.7.0",
+        "webpack": "^4.8.3",
+        "webpack-cli": "^2.1.4",
+        "style-loader": "^0.21.0",
+        "css-loader": "^0.28.11"
+    }
 }
