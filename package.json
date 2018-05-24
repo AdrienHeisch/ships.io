@@ -4,7 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "webpack && echo Opening Firefox tab... && start firefox \"http://localhost:8080/\" && node ./dist/server.js"
+        "start": "powershell -executionpolicy remotesigned -File .\\cmd\\start.ps1",
+        "build": "powershell -executionpolicy remotesigned -File .\\cmd\\build.ps1",
+        "test": "powershell -executionpolicy remotesigned -File .\\cmd\\test.ps1",
+        "open": "powershell -executionpolicy remotesigned -File .\\cmd\\open.ps1"
     },
     "repository": {
         "type": "git",
