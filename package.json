@@ -7,7 +7,8 @@
         "start": "powershell -executionpolicy remotesigned -File .\\cmd\\start.ps1",
         "build": "powershell -executionpolicy remotesigned -File .\\cmd\\build.ps1",
         "test": "powershell -executionpolicy remotesigned -File .\\cmd\\test.ps1",
-        "open": "powershell -executionpolicy remotesigned -File .\\cmd\\open.ps1"
+        "open": "powershell -executionpolicy remotesigned -File .\\cmd\\open.ps1",
+        "deploy": "powershell -executionpolicy remotesigned -File .\\cmd\\deploy.ps1"
     },
     "repository": {
         "type": "git",
