@@ -18,7 +18,10 @@
     "homepage": "https://github.com/AdrienHeisch/ships.io#readme",
     "dependencies": {
         "express": "^4.16.3",
-        "fs": "0.0.1-security"
+        "file-loader": "^1.1.11",
+        "fs": "0.0.1-security",
+        "jquery": "^3.3.1",
+        "socket.io": "^2.1.1"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",

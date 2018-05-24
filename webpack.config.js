@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 
-const mode = "production";
+const mode = "development";
 
 module.exports = [
     {
@@ -19,11 +19,13 @@ module.exports = [
             net: "empty"
         },
         module: {
-            rules: [{
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            }]
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: "babel-loader"
+                }
+            ]
         }
     },
     {
@@ -42,6 +44,12 @@ module.exports = [
                     use: [
                         'style-loader',
                         'css-loader'
+                    ]
+                },
+                {
+                    test: /\.(png|svg|jpg|gif)$/,
+                    use: [
+                        'file-loader'
                     ]
                 }
             ]
