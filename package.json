@@ -4,11 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "powershell -executionpolicy remotesigned -File .\\cmd\\start.ps1",
-        "build": "powershell -executionpolicy remotesigned -File .\\cmd\\build.ps1",
-        "test": "powershell -executionpolicy remotesigned -File .\\cmd\\test.ps1",
-        "open": "powershell -executionpolicy remotesigned -File .\\cmd\\open.ps1",
-        "deploy": "powershell -executionpolicy remotesigned -File .\\cmd\\deploy.ps1"
+        "postinstall": "webpack -p",
+        "start": "echo Starting server... && node \"./dist/server.js\"",
+        "build": "echo Building app... && webpack",
+        "test": "npm run build && npm run open && npm start",
+        "open": "echo Opening browser tab... && start firefox \"http://localhost:8080/\""
     },
     "repository": {
         "type": "git",
@@ -31,9 +31,10 @@
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.4",
         "babel-preset-env": "^1.7.0",
-        "webpack": "^4.8.3",
-        "webpack-cli": "^2.1.4",
+        "copy-webpack-plugin": "^4.5.1",
+        "css-loader": "^0.28.11",
         "style-loader": "^0.21.0",
-        "css-loader": "^0.28.11"
+        "webpack": "^4.8.3",
+        "webpack-cli": "^2.1.4"
     }
 }
