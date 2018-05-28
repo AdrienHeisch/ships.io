@@ -4,11 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "postinstall": "webpack -p",
+        "postinstall": "set NODE_ENV=production && parallel-webpack",
         "start": "echo Starting server... && node \"./dist/server.js\"",
-        "build": "echo Building app... && webpack",
+        "build": "echo Building app... && parallel-webpack",
         "test": "npm run build && npm run open && npm start",
-        "open": "echo Opening browser tab... && start firefox \"http://localhost:8080/\""
+        "open": "echo Opening browser tab... && start chrome \"http://localhost:8080/\""
     },
     "repository": {
         "type": "git",
@@ -25,6 +25,7 @@
         "file-loader": "^1.1.11",
         "fs": "0.0.1-security",
         "jquery": "^3.3.1",
+        "pixi.js": "^4.8.0",
         "socket.io": "^2.1.1"
     },
     "devDependencies": {
@@ -33,6 +34,7 @@
         "babel-preset-env": "^1.7.0",
         "copy-webpack-plugin": "^4.5.1",
         "css-loader": "^0.28.11",
+        "parallel-webpack": "^2.3.0",
         "style-loader": "^0.21.0",
         "webpack": "^4.8.3",
         "webpack-cli": "^2.1.4"
