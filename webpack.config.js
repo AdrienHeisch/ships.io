@@ -1,10 +1,13 @@
 const webpack = require("webpack");
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const nodeExternals = require("webpack-node-externals");
+
+// process.env.NODE_ENV = "production"  // uncomment to build in production mode
 
 const sharedProperties = {
     mode: process.env.NODE_ENV || "development",
-    // devtool: process.env.NODE_ENV === "production" ? "source-map" : "eval",
+    devtool: process.env.NODE_ENV === "production" ? "source-map" : "cheap-module-eval-source-map",
 }
 
 const serverConfig = {
@@ -32,6 +35,9 @@ const serverConfig = {
         new CopyWebpackPlugin([
             { from: "./src/static/", to: "./" }
         ])
+    ],
+    externals: [
+        nodeExternals()
     ]
 }
 
