@@ -8,7 +8,7 @@
         "start": "echo Starting server... && node \"./dist/server.js\"",
         "build": "echo Building app... && parallel-webpack",
         "test": "npm run build && npm run open && npm start",
-        "open": "echo Opening browser tab... && start chrome \"http://localhost:8080/\""
+        "open": "echo Opening browser tab... && start firefox \"http://localhost:8080/\""
     },
     "repository": {
         "type": "git",
