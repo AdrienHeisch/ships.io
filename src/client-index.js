@@ -1,3 +1,3 @@
-import main from './client/main.js';
+import Main from './client/Main.js';
 
-main();
+Main.init();

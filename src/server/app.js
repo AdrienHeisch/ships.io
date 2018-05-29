@@ -21,6 +21,7 @@ export default ({
         app.use(express.static('./dist/public/'));
 
         server.listen(port);
+
         console.log('Listening on port', port, '!');
     },
     stop() {

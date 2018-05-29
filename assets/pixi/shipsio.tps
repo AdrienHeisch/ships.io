@@ -183,8 +183,8 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../images/bullet.png</key>
-            <key type="filename">../images/red_bullet.png</key>
+            <key type="filename">../images/bullet_default.png</key>
+            <key type="filename">../images/red-bullet_default.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -197,7 +197,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/ship.png</key>
+            <key type="filename">../images/ship_default.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

@@ -1,6 +1,6 @@
 {"frames": {
 
-"bullet.png":
+"bullet_default.png":
 {
 	"frame": {"x":0,"y":0,"w":45,"h":8},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":8},
 	"sourceSize": {"w":45,"h":8}
 },
-"red_bullet.png":
+"bullet_red.png":
 {
 	"frame": {"x":0,"y":8,"w":45,"h":8},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":8},
 	"sourceSize": {"w":45,"h":8}
 },
-"ship.png":
+"ship_default.png":
 {
 	"frame": {"x":0,"y":16,"w":50,"h":79},
 	"rotated": false,
@@ -31,6 +31,6 @@
 	"format": "RGBA8888",
 	"size": {"w":50,"h":95},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f7f3fde6c00d10ccecca4adca02c7dc1:5f3c9f06cff7e0dc5bbb50312f3c844e:cf827d152df04949dfee256cd0c8efd8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d50d79b3d3fcdde2402c695b83379d7b:5f3c9f06cff7e0dc5bbb50312f3c844e:cf827d152df04949dfee256cd0c8efd8$"
 }
 }
