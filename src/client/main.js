@@ -60,5 +60,4 @@ export default function init() {
     });
 
     console.log("Here's a point:", new Point(5, 2));
-    console.log("hope")
 }

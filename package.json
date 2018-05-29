@@ -22,6 +22,7 @@
     "homepage": "https://github.com/AdrienHeisch/ships.io#readme",
     "dependencies": {
         "express": "^4.16.3",
+        "expresslfs": "https://github.com/goodenough/express-lfs/archive/master.tar.gz",
         "file-loader": "^1.1.11",
         "fs": "0.0.1-security",
         "jquery": "^3.3.1",
