@@ -1,23 +1,32 @@
 export default class Timer {
 
-    static get now () {
+    static get now ():number {
         return window ? window.performance.now() : Date.now();
     } 
 
+    protected isRunning:boolean = false;
+    
+    protected _elapsedTime:number;
+    public get elapsedTime () { return this._elapsedTime; }
+
+    protected _deltaTime:number;
+    public get deltaTime () { return this._deltaTime; }
+
+    protected lastDateInMS:number;
+
     constructor() {
-        this.isRunning = false;
         this.reset();
         this.resume();
     }
 
     update() {
         this.updateDeltaTime();
-        this.elapsedTime += this.deltaTime;
+        this._elapsedTime += this.deltaTime;
     }
 
     updateDeltaTime() {
         let lCurrent = Timer.now;
-        this.deltaTime = this.isRunning ? lCurrent - this.lastDateInMS : 0;
+        this._deltaTime = this.isRunning ? lCurrent - this.lastDateInMS : 0;
         this.lastDateInMS = lCurrent;
     }
 
@@ -31,8 +40,8 @@ export default class Timer {
     }
 
     reset() {
-        this.elapsedTime = 0;
-        this.deltaTime = 0;
+        this._elapsedTime = 0;
+        this._deltaTime = 0;
     }
 
 }
