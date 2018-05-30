@@ -6,7 +6,7 @@
     "target": "es5",
     "allowJs": true,
     "typeRoots": [
-      "custom_typings"
+      "typings"
     ],
     "lib": [
       "dom",
