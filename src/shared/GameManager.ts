@@ -21,11 +21,11 @@ export default class GameManager {
     public static init ():void {
         let ship:Ship = new Ship();
         ship.x = 50;
-        ship.y = 50;
+        ship.y = 200;
 
         let bullet:Bullet = new Bullet();
         bullet.x = 100;
-        bullet.y = 50;
+        bullet.y = 200;
         bullet.setModeNormal();
         
         GameManager.resume();
