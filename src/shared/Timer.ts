@@ -1,6 +1,6 @@
 export default class Timer {
 
-    static get now ():number {
+    static getNow ():number {
         return window ? window.performance.now() : Date.now();
     } 
 
@@ -25,13 +25,13 @@ export default class Timer {
     }
 
     updateDeltaTime() {
-        let lCurrent = Timer.now;
+        let lCurrent:number = Timer.getNow();
         this._deltaTime = this.isRunning ? lCurrent - this.lastDateInMS : 0;
         this.lastDateInMS = lCurrent;
     }
 
     resume() {
-        this.lastDateInMS = Timer.now;
+        this.lastDateInMS = Timer.getNow();
         this.isRunning = true;
     }
 

@@ -11,7 +11,7 @@ export default class Bullet extends StateObject {
     doActionNormal ():void {
         super.doActionNormal();
         this.x++;
-        if ((this.blinkCounter++) % 20 === 0) this.setState(this.state === StateObject.DEFAULT_STATE ? "red" : StateObject.DEFAULT_STATE);
+        if ((this.blinkCounter++) % 20 === 0) this.state = (this.state === StateObject.DEFAULT_STATE ? "red" : StateObject.DEFAULT_STATE);
     }
 
 }

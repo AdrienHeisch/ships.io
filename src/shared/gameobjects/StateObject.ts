@@ -14,10 +14,7 @@ export default class StateObject extends GameObject {
     public static readonly DEFAULT_EXTENSION:string = "png";
 
     public assetName:string;
-
-    protected _state:string = StateObject.DEFAULT_STATE;
-    public get state () { return this._state; }
-
+    public state:string = StateObject.DEFAULT_STATE;
     public fileExtension:string = StateObject.DEFAULT_EXTENSION;
 
     public readonly uid:number = StateObject.getNewId();
@@ -29,12 +26,8 @@ export default class StateObject extends GameObject {
         this.assetName = (this.constructor as any).name.toLowerCase();
     }
 
-    public get displayName ():string {
+    public getDisplayName ():string {
         return this.assetName + "_" + this.state + "." + this.fileExtension;
-    }
-
-    public setState (pState:string):void {
-        this._state = pState;
     }
 
     public destroy ():void {

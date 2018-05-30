@@ -59,7 +59,7 @@ export default class DisplayManager {
             let lDisplayObject:DisplayObject = DisplayObject.list[lStateObject.uid];
             lDisplayObject.sprite.x = lStateObject.x;
             lDisplayObject.sprite.y = lStateObject.y;
-            lDisplayObject.setDisplay(lStateObject.displayName);
+            lDisplayObject.setDisplay(lStateObject.getDisplayName());
         }
 
         DisplayManager.animationFrame = requestAnimationFrame(DisplayManager.render.bind(DisplayManager));
