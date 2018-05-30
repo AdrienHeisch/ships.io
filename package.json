@@ -30,13 +30,19 @@
         "socket.io": "^2.1.1"
     },
     "devDependencies": {
+        "@types/jquery": "^3.3.2",
+        "@types/pixi.js": "^4.7.4",
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.4",
         "babel-preset-env": "^1.7.0",
         "copy-webpack-plugin": "^4.5.1",
         "css-loader": "^0.28.11",
+        "fork-ts-checker-webpack-plugin": "^0.4.1",
         "parallel-webpack": "^2.3.0",
+        "pixi-typescript": "https://github.com/pixijs/pixi-typescript/archive/master.tar.gz",
         "style-loader": "^0.21.0",
+        "ts-loader": "^4.3.0",
+        "typescript": "^2.8.3",
         "webpack": "^4.8.3",
         "webpack-cli": "^2.1.4",
         "webpack-node-externals": "^1.7.2"

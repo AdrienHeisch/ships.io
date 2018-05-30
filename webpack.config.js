@@ -2,12 +2,16 @@ const webpack = require("webpack");
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // process.env.NODE_ENV = "production"  // uncomment to build in production mode
 
 const sharedProperties = {
     mode: process.env.NODE_ENV || "development",
     devtool: process.env.NODE_ENV === "production" ? "source-map" : "cheap-module-eval-source-map",
+    resolve: {
+      extensions: [ '.tsx', '.ts', '.js' ]
+    }
 }
 
 const serverConfig = {
@@ -28,13 +32,19 @@ const serverConfig = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.ts$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/
             }
         ]
     },
     plugins: [
         new CopyWebpackPlugin([
             { from: "./src/static/", to: "./" }
-        ])
+        ]),
+        new ForkTsCheckerWebpackPlugin()
     ],
     externals: [
         nodeExternals()
@@ -60,28 +70,31 @@ const clientConfig = {
             {
                 type: 'javascript/auto',
                 test: /\.json$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]'
-                        }
-                    }
-                ]
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]'
+                }
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]'
-                        }
-                    }
-                ]
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]'
+                }
+            },
+            {
+                test: /\.ts$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    transpileOnly: true
+                }
             }
         ]
-    }
+    },
+    plugins: [
+        new ForkTsCheckerWebpackPlugin()
+    ]
 }
 
 module.exports = [
