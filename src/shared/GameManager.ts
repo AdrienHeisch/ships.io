@@ -5,6 +5,8 @@ import GameObject from './gameobjects/GameObject';
 
 export default class GameManager {
 
+    public static stepMethods:Array<Function> = [GameManager.doActionAll];
+
     public static timer:Timer = new Timer();
 
     private static _timeStep:number = 16;
@@ -32,7 +34,11 @@ export default class GameManager {
     }
 
     private static step ():void {
-        for (let lGameObject of GameObject.list) lGameObject.doAction();
+        for (let lMethod of GameManager.stepMethods) lMethod();
+    }
+
+    private static doActionAll ():void {
+        for (let lIndex in GameObject.list) GameObject.list[lIndex].doAction();
     }
 
     public static resume ():void {

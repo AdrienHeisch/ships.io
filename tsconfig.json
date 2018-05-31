@@ -8,6 +8,7 @@
     "typeRoots": [
       "typings"
     ],
+    "experimentalDecorators": true,
     "lib": [
       "dom",
       "es2015"

@@ -2,13 +2,21 @@ export default class GameObject {
 
     public static readonly list:Array<GameObject> = [];
 
+    private static getNewId ():number  {
+        return GameObject.lastId++;
+    }
+
+    private static lastId:number = 0;
+
+    public readonly uid:number = GameObject.getNewId();
+
     public doAction:Function;
 
     public x:number = 0;
     public y:number = 0;
 
     constructor () {
-        GameObject.list.push(this);
+        GameObject.list[this.uid] = this;
         this.setModeVoid();
     }
 
@@ -25,7 +33,7 @@ export default class GameObject {
     }
 
     public destroy ():void {
-        GameObject.list.splice(GameObject.list.indexOf(this), 1);
+        delete GameObject.list[this.uid];
     }
 
 }

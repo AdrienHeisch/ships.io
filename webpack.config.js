@@ -71,6 +71,7 @@ const clientConfig = {
                 type: 'javascript/auto',
                 test: /\.json$/,
                 loader: 'file-loader',
+                exclude: '/config',
                 options: {
                     name: '[name].[ext]'
                 }

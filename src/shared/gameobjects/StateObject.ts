@@ -2,12 +2,6 @@ import GameObject from './GameObject';
 
 export default class StateObject extends GameObject {
 
-    private static getNewId ():number  {
-        return StateObject.lastId++;
-    }
-
-    private static lastId:number = 0;
-    
     public static readonly list:Array<StateObject> = [];
     
     public static readonly DEFAULT_STATE:string = "default";
@@ -16,8 +10,6 @@ export default class StateObject extends GameObject {
     public assetName:string;
     public state:string = StateObject.DEFAULT_STATE;
     public fileExtension:string = StateObject.DEFAULT_EXTENSION;
-
-    public readonly uid:number = StateObject.getNewId();
 
     public constructor () {
         super();

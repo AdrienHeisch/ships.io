@@ -15,7 +15,7 @@ export default class DisplayObject {
 
     public static removeSprite (pUid:number):void {
         DisplayObject.list[pUid].destroy();
-        DisplayObject.list[pUid] = undefined;
+        delete DisplayObject.list[pUid];
     }
 
     public readonly sprite:PIXI.Sprite = new PIXI.Sprite();
