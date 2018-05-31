@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
-import Timer from './../shared/Timer';
-import StateObject from './../shared/gameobjects/StateObject';
+import Timer from '../shared/Timer';
+import StateObject from '../shared/gameobjects/StateObject';
 import DisplayObject from './DisplayObject';
 import * as $ from 'jquery';
 
@@ -59,7 +59,7 @@ export default class DisplayManager {
             let lDisplayObject:DisplayObject = DisplayObject.list[lStateObject.uid];
             lDisplayObject.sprite.x = lStateObject.x;
             lDisplayObject.sprite.y = lStateObject.y;
-            lDisplayObject.setDisplay(lStateObject.getDisplayName());
+            lDisplayObject.setDisplay(lStateObject.getDisplayName() + ".png");
         }
 
         DisplayManager.animationFrame = requestAnimationFrame(DisplayManager.render.bind(DisplayManager));
