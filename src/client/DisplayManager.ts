@@ -14,6 +14,7 @@ export default class DisplayManager {
 
     private static rendererDisplay:PIXI.Text;
     private static fpsDisplay:PIXI.Text;
+    private static pingDisplay:PIXI.Text;
 
     public static init () {
         (window as any).PIXI = undefined;
@@ -42,6 +43,10 @@ export default class DisplayManager {
         DisplayManager.fpsDisplay = new PIXI.Text("");
         DisplayManager.fpsDisplay.y = DisplayManager.rendererDisplay.y + DisplayManager.rendererDisplay.height;
         DisplayManager.app.stage.addChild(DisplayManager.fpsDisplay);
+
+        DisplayManager.pingDisplay = new PIXI.Text("");
+        DisplayManager.pingDisplay.y = DisplayManager.pingDisplay.y + DisplayManager.pingDisplay.height;
+        DisplayManager.app.stage.addChild(DisplayManager.pingDisplay);
 
         DisplayManager.timer.reset
         DisplayManager.resume();

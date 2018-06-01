@@ -53,7 +53,6 @@ export default class GameObject {
     }
 
     static setData (pData:Array<any>):void {
-        // console.log(pData);
         let lMap:Array<number> = GameObject.list.map(pGameObject => pGameObject.uid);
 
         for (let lItem of pData) {
