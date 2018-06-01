@@ -1,5 +1,4 @@
 import InputManager from './InputManager';
-import GameObject from './../../shared/gameobjects/GameObject';
 
 @staticImplements<InputManager>()
 export default class KeyboardManager {

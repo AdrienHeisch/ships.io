@@ -28,7 +28,8 @@ export default class DisplayObject {
     public setDisplay (pAssetName:string):void {
         if (this.assetName === pAssetName) return;
         this.assetName = pAssetName;
-        this.sprite.texture = Main.textures[this.assetName];
+        this.sprite.texture = 
+        PIXI.loader.resources[textureAtlas].textures[this.assetName];
     }
 
     protected destroy ():void {

@@ -11,22 +11,13 @@ import KeyboardManager from './input/KeyboardManager';
 import GameObject from './../shared/gameobjects/GameObject';
 import Ship from '../shared/gameobjects/sprites/Ship';
 
-export default ({
-
-    textures: undefined,
-
-    init() {
-        NetworkManager.init();
-
+export default class Main {
+    public static init ():void {
         PIXI.loader.add(textureAtlas).load(() => {
-            this.textures = PIXI.loader.resources[textureAtlas].textures;
-
-            GameManager.init();
-
             KeyboardManager.init();
             
             GameManager.stepMethods.unshift(() => {
-                GameObject.list[0].setInput({
+                (GameObject.list[0] as Ship).setInput({
                     up:KeyboardManager.up,
                     down:KeyboardManager.down,
                     left:KeyboardManager.left,
@@ -35,7 +26,13 @@ export default ({
                 NetworkManager.sendInputs(KeyboardManager);
             });
 
+            GameManager.init();
+
             DisplayManager.init();
+
+            NetworkManager.init();
         });
     }
-})
+}
+
+Main.init();

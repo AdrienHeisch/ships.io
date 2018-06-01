@@ -17,7 +17,7 @@ const sharedProperties = {
 const serverConfig = {
     name: "server",
     target: 'node',
-    entry: "./src/server-index.js",
+    entry: "./src/server/Main.ts",
     output: {
         path: path.resolve("./dist/"),
         filename: "server.js"
@@ -56,7 +56,7 @@ const serverConfig = {
 
 const clientConfig = {
     name: "client",
-    entry: "./src/client-index.js",
+    entry: "./src/client/Main.ts",
     output: {
         path: path.resolve("./dist/public/"),
         filename: "bundle.js"
