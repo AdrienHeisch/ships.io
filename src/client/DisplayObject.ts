@@ -9,13 +9,13 @@ export default class DisplayObject {
     public static readonly list:Array<DisplayObject> = [];
 
     public static addSprite (pUid:number):DisplayObject {
-        DisplayObject.list[pUid] = new DisplayObject();
-        return DisplayObject.list[pUid];
+        this.list[pUid] = new DisplayObject();
+        return this.list[pUid];
     }
 
     public static removeSprite (pUid:number):void {
-        DisplayObject.list[pUid].destroy();
-        delete DisplayObject.list[pUid];
+        this.list[pUid].destroy();
+        delete this.list[pUid];
     }
 
     public readonly sprite:PIXI.Sprite = new PIXI.Sprite();

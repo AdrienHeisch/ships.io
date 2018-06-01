@@ -6,32 +6,32 @@ export default class KeyboardManager {
     private static keys:Array<boolean>;
 
     public static init ():void {
-        KeyboardManager.keys = [];
-        window.addEventListener('keydown', KeyboardManager.registerKey);
-        window.addEventListener('keyup', KeyboardManager.unregisterKey);
+        this.keys = [];
+        window.addEventListener('keydown', this.registerKey.bind(this));
+        window.addEventListener('keyup', this.unregisterKey.bind(this));
     }
 
     public static stop ():void {
-        KeyboardManager.keys = undefined;
-        window.removeEventListener('keydown', KeyboardManager.registerKey);
-        window.removeEventListener('keyup', KeyboardManager.unregisterKey);
+        this.keys = undefined;
+        window.removeEventListener('keydown', this.registerKey.bind(this));
+        window.removeEventListener('keyup', this.unregisterKey.bind(this));
     }
 
-    public static get up    () { return KeyboardManager.checkKey(38); }
-    public static get down  () { return KeyboardManager.checkKey(40); }
-    public static get left  () { return KeyboardManager.checkKey(37); }
-    public static get right () { return KeyboardManager.checkKey(39); }
+    public static get up    () { return this.checkKey(38); }
+    public static get down  () { return this.checkKey(40); }
+    public static get left  () { return this.checkKey(37); }
+    public static get right () { return this.checkKey(39); }
 
     private static checkKey (pKeyCode:number):boolean {
-        return !!KeyboardManager.keys[pKeyCode];
+        return !!this.keys[pKeyCode];
     }
 
     private static registerKey(pEvent:KeyboardEvent):void {
-        if (!KeyboardManager.checkKey(pEvent.keyCode)) KeyboardManager.keys[pEvent.keyCode] = true;
+        if (!this.checkKey(pEvent.keyCode)) this.keys[pEvent.keyCode] = true;
     }
 
     private static unregisterKey(pEvent:KeyboardEvent):void {
-        if (KeyboardManager.checkKey(pEvent.keyCode)) delete KeyboardManager.keys[pEvent.keyCode];
+        if (this.checkKey(pEvent.keyCode)) delete this.keys[pEvent.keyCode];
     }
 
 }

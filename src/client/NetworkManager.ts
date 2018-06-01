@@ -14,14 +14,14 @@ export default class NetworkManager {
     private static pingSent:boolean = false;
 
     public static init ():void {
-        NetworkManager.socket = io.connect(window.location.href);
-        NetworkManager.addListeners(NetworkManager.socket);
+        this.socket = io.connect(window.location.href);
+        this.addListeners(this.socket);
     
-        NetworkManager.pingInterval = window.setInterval(NetworkManager.ping, 1000 / config.pingFreq);
+        this.pingInterval = window.setInterval(this.ping.bind(this), 1000 / config.pingFreq);
     }
 
     public static sendInputs (pManager:InputManager):void {
-        NetworkManager.socket.emit(Events.Input, {
+        this.socket.emit(Events.Input, {
             up:pManager.up,
             down:pManager.down,
             left:pManager.left,
@@ -31,11 +31,11 @@ export default class NetworkManager {
 
     private static ping ():void {
 
-        NetworkManager.socket.on(Events.Ping, () => {
-            NetworkManager.socket.off(Events.Ping);
-            NetworkManager.pingSent
+        this.socket.on(Events.Ping, () => {
+            this.socket.off(Events.Ping);
+            this.pingSent
         });
-        NetworkManager.socket.emit(Events.Ping);
+        this.socket.emit(Events.Ping);
     }
 
     private static addListeners (pSocket:SocketIOClient.Socket):void {

@@ -11,11 +11,11 @@ export default class GameManager {
 
     private static _timeStep:number = 16;
 
-    public static get timeStep () { return GameManager._timeStep; }
+    public static get timeStep () { return this._timeStep; }
     public static set timeStep (pStep) {
-        GameManager._timeStep = pStep;
-        GameManager.pause();
-        GameManager.resume();
+        this._timeStep = pStep;
+        this.pause();
+        this.resume();
     }
 
     private static _interval:any;
@@ -34,11 +34,11 @@ export default class GameManager {
         bullet.y = 200;
         bullet.start();
         
-        GameManager.resume();
+        this.resume();
     }
 
     private static step ():void {
-        for (let lMethod of GameManager.stepMethods) lMethod();
+        for (let lMethod of this.stepMethods) lMethod();
     }
 
     private static doActionAll ():void {
@@ -46,11 +46,11 @@ export default class GameManager {
     }
 
     public static resume ():void {
-        GameManager._interval = setInterval(GameManager.step, GameManager.timeStep);
+        this._interval = setInterval(this.step.bind(this), this.timeStep);
     }
 
     public static pause ():void {
-        clearInterval(GameManager._interval);
+        clearInterval(this._interval);
     }
     
 }

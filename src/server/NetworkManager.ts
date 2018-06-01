@@ -14,8 +14,8 @@ export default class NetworkManager {
     private static updateInterval:NodeJS.Timer;
 
     public static init (pServer:Server):void {
-        NetworkManager.io = socketio(pServer);
-        NetworkManager.io.sockets.on('connect', (pSocket:SocketIO.Socket) => {
+        this.io = socketio(pServer);
+        this.io.sockets.on('connect', (pSocket:SocketIO.Socket) => {
             console.log('new client !');
             pSocket.on(Events.Ping, () => pSocket.emit(Events.Ping));
             pSocket.on(Events.Input, (pInput:ShipInput) => {
@@ -24,20 +24,20 @@ export default class NetworkManager {
             });
         });
 
-        NetworkManager.resume();
+        this.resume();
     }
 
     public static resume ():void {
-        NetworkManager.updateInterval = setInterval(NetworkManager.sendGameData, 1000 / config.updateFreq);
+        this.updateInterval = global.setInterval(this.sendGameData.bind(this), 1000 / config.updateFreq);
     }
 
     public static stop ():void {
-        clearInterval(NetworkManager.updateInterval);
+        clearInterval(this.updateInterval);
     }
 
     private static sendGameData (pSocket?:SocketIO.Socket):void {
         if (pSocket) pSocket.emit(Events.GameData, GameObject.getData());
-        else NetworkManager.io.sockets.emit(Events.GameData, GameObject.getData());
+        else this.io.sockets.emit(Events.GameData, GameObject.getData());
     }
 
 }

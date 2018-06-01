@@ -10,7 +10,7 @@ export default class DisplayManager {
     private static animationFrame:number;
 
     private static _app:PIXI.Application;
-    public static get app () { return DisplayManager._app; }
+    public static get app () { return this._app; }
 
     private static rendererDisplay:PIXI.Text;
     private static fpsDisplay:PIXI.Text;
@@ -20,45 +20,45 @@ export default class DisplayManager {
         (window as any).PIXI = undefined;
         PIXI.utils.skipHello();
         
-        DisplayManager._app = new PIXI.Application({ width: 1280, height: 720, transparent: false });
-        DisplayManager.app.renderer.backgroundColor = 0xCCCCCC;
+        this._app = new PIXI.Application({ width: 1280, height: 720, transparent: false });
+        this.app.renderer.backgroundColor = 0xCCCCCC;
         
         $(document.body).append(
             $("<div></div>").attr("id", "root").append(
-                $(DisplayManager.app.view)
+                $(this.app.view)
             )
         );
 
         let lRendererType:string =
-            DisplayManager.app.renderer instanceof PIXI.CanvasRenderer
+            this.app.renderer instanceof PIXI.CanvasRenderer
                 ? "Canvas"
-                : DisplayManager.app.renderer instanceof PIXI.WebGLRenderer
+                : this.app.renderer instanceof PIXI.WebGLRenderer
                     ? "WebGL"
                     : "Unknown"
         ;
 
-        DisplayManager.rendererDisplay = new PIXI.Text("Current renderer : " + lRendererType);
-        DisplayManager.app.stage.addChild(DisplayManager.rendererDisplay);
+        this.rendererDisplay = new PIXI.Text("Current renderer : " + lRendererType);
+        this.app.stage.addChild(this.rendererDisplay);
 
-        DisplayManager.fpsDisplay = new PIXI.Text("");
-        DisplayManager.fpsDisplay.y = DisplayManager.rendererDisplay.y + DisplayManager.rendererDisplay.height;
-        DisplayManager.app.stage.addChild(DisplayManager.fpsDisplay);
+        this.fpsDisplay = new PIXI.Text("");
+        this.fpsDisplay.y = this.rendererDisplay.y + this.rendererDisplay.height;
+        this.app.stage.addChild(this.fpsDisplay);
 
-        DisplayManager.pingDisplay = new PIXI.Text("");
-        DisplayManager.pingDisplay.y = DisplayManager.pingDisplay.y + DisplayManager.pingDisplay.height;
-        DisplayManager.app.stage.addChild(DisplayManager.pingDisplay);
+        this.pingDisplay = new PIXI.Text("");
+        this.pingDisplay.y = this.pingDisplay.y + this.pingDisplay.height;
+        this.app.stage.addChild(this.pingDisplay);
 
-        DisplayManager.timer.reset
-        DisplayManager.resume();
+        this.timer.reset
+        this.resume();
     }
 
     private static render () {
-        DisplayManager.timer.update();
-        DisplayManager.fpsDisplay.text = Math.round(1000 / DisplayManager.timer.deltaTime) + " FPS";
+        this.timer.update();
+        this.fpsDisplay.text = Math.round(1000 / this.timer.deltaTime) + " FPS";
         
         for (let lStateObject of StateObject.list) {
             if (!DisplayObject.list[lStateObject.uid]) {
-                DisplayManager.app.stage.addChild(DisplayObject.addSprite(lStateObject.uid).sprite);
+                this.app.stage.addChild(DisplayObject.addSprite(lStateObject.uid).sprite);
             }
 
             let lDisplayObject:DisplayObject = DisplayObject.list[lStateObject.uid];
@@ -67,14 +67,14 @@ export default class DisplayManager {
             lDisplayObject.setDisplay(lStateObject.getDisplayName() + ".png");
         }
 
-        DisplayManager.animationFrame = requestAnimationFrame(DisplayManager.render.bind(DisplayManager));
+        this.animationFrame = requestAnimationFrame(this.render.bind(this));
     }
 
     public static resume () {
-        DisplayManager.render();
+        this.render();
     }
 
     public static stop () {
-        cancelAnimationFrame(DisplayManager.animationFrame);
+        cancelAnimationFrame(this.animationFrame);
     }
 }
