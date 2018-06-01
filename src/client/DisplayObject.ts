@@ -1,7 +1,7 @@
-import "../../assets/pixi/textures.png";
+import textureAtlas from '../../assets/pixi/textures.json';
 
 import * as PIXI from "pixi.js";
-import textureAtlas from '../../assets/pixi/textures.json';
+
 import Main from './Main';
 
 export default class DisplayObject {

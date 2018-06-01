@@ -1,7 +1,7 @@
 export default class Timer {
 
     static getNow ():number {
-        return window ? window.performance.now() : Date.now();
+        return Date.now();
     } 
 
     protected isRunning:boolean = false;
