@@ -10,4 +10,5 @@ type ShipInput = {
     down:boolean;
     left:boolean;
     right:boolean;
+    shoot:boolean;
 }

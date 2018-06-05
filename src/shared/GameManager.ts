@@ -27,13 +27,13 @@ export default class GameManager {
             ship.y = 200;// + i;
             ship.start();
         // }
-        
+
 
         let bullet:Bullet = new Bullet();
         bullet.x = 100;
         bullet.y = 200;
         bullet.start();
-        
+
         this.resume();
     }
 
@@ -52,5 +52,5 @@ export default class GameManager {
     public static pause ():void {
         clearInterval(this._interval);
     }
-    
+
 }

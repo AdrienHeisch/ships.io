@@ -3,12 +3,13 @@ import GameObject from './GameObject';
 export default class StateObject extends GameObject {
 
     public static readonly list:Array<StateObject> = [];
-    
     public static readonly DEFAULT_STATE:string = "default";
 
     public assetName:string;
     public state:string = StateObject.DEFAULT_STATE;
 
+    public rotation:number = 0;
+    
     public constructor () {
         super();
         StateObject.list.push(this);

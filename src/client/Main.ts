@@ -15,13 +15,14 @@ export default class Main {
     public static init ():void {
         PIXI.loader.add(textureAtlas).load(() => {
             KeyboardManager.init();
-            
+
             GameManager.stepMethods.unshift(() => {
                 (GameObject.list[0] as Ship).setInput({
                     up:KeyboardManager.up,
                     down:KeyboardManager.down,
                     left:KeyboardManager.left,
-                    right:KeyboardManager.right
+                    right:KeyboardManager.right,
+                    shoot:KeyboardManager.space
                 });
                 NetworkManager.sendInputs(KeyboardManager);
             });

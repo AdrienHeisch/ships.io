@@ -21,6 +21,7 @@ export default class KeyboardManager {
     public static get down  () { return this.checkKey(40); }
     public static get left  () { return this.checkKey(37); }
     public static get right () { return this.checkKey(39); }
+    public static get space () { return this.checkKey(32); }
 
     private static checkKey (pKeyCode:number):boolean {
         return !!this.keys[pKeyCode];

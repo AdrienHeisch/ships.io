@@ -1,8 +1,5 @@
-import config from '../../config/client.json';
-import KeyboardManager from './KeyboardManager';
-
 export default interface InputManager {
-    
+
     init ():void;
     stop ():void;
 
@@ -10,5 +7,6 @@ export default interface InputManager {
     down:boolean;
     left:boolean;
     right:boolean;
-
+    space:boolean;
+    
 }

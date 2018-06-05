@@ -19,10 +19,10 @@ export default class DisplayManager {
     public static init () {
         (window as any).PIXI = undefined;
         PIXI.utils.skipHello();
-        
+
         this._app = new PIXI.Application({ width: 1280, height: 720, transparent: false });
         this.app.renderer.backgroundColor = 0xCCCCCC;
-        
+
         $(document.body).append(
             $("<div></div>").attr("id", "root").append(
                 $(this.app.view)
@@ -48,14 +48,14 @@ export default class DisplayManager {
         this.pingDisplay.y = this.pingDisplay.y + this.pingDisplay.height;
         this.app.stage.addChild(this.pingDisplay);
 
-        this.timer.reset
+        this.timer.reset();
         this.resume();
     }
 
     private static render () {
         this.timer.update();
         this.fpsDisplay.text = Math.round(1000 / this.timer.deltaTime) + " FPS";
-        
+
         for (let lStateObject of StateObject.list) {
             if (!DisplayObject.list[lStateObject.uid]) {
                 this.app.stage.addChild(DisplayObject.addSprite(lStateObject.uid).sprite);
@@ -64,6 +64,7 @@ export default class DisplayManager {
             let lDisplayObject:DisplayObject = DisplayObject.list[lStateObject.uid];
             lDisplayObject.sprite.x = lStateObject.x;
             lDisplayObject.sprite.y = lStateObject.y;
+            lDisplayObject.sprite.rotation = lStateObject.rotation;
             lDisplayObject.setDisplay(lStateObject.getDisplayName() + ".png");
         }
 
