@@ -4,8 +4,6 @@ export default class GameObject {
 
     private static lastId:number = 0;
 
-    public readonly uid:number = GameObject.getNewId();
-
     private static getNewId ():number  {
         return this.lastId++;
     }
@@ -34,10 +32,13 @@ export default class GameObject {
         }
     }
 
+    public readonly uid:number = GameObject.getNewId();
+
     public doAction:Function;
 
     public x:number = 0;
     public y:number = 0;
+    public rotation:number = 0;
 
     constructor () {
         GameObject.list[this.uid] = this;

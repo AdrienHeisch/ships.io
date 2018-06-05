@@ -30,12 +30,8 @@ export default class Mobile extends StateObject {
         this.y += this.velocity.y;
     }
 
-    protected onBorderX ():void {
+    protected onBorderX ():void {}
 
-    }
-
-    protected onBorderY ():void {
-
-    }
+    protected onBorderY ():void {}
 
 }

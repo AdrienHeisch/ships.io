@@ -21,13 +21,10 @@ export default class GameManager {
     private static _interval:any;
 
     public static init ():void {
-        // for (let i = 0; i < 1; i++) {
-            let ship:Ship = new Ship();
-            ship.x = 50;
-            ship.y = 200;// + i;
-            ship.start();
-        // }
-
+        let ship:Ship = new Ship();
+        ship.x = 50;
+        ship.y = 200;
+        ship.start();
 
         let bullet:Bullet = new Bullet();
         bullet.x = 100;

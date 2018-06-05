@@ -7,8 +7,6 @@ export default class StateObject extends GameObject {
 
     public assetName:string;
     public state:string = StateObject.DEFAULT_STATE;
-
-    public rotation:number = 0;
     
     public constructor () {
         super();

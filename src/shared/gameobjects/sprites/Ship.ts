@@ -2,6 +2,7 @@ import Mobile from './Mobile';
 import Bullet from './Bullet';
 
 export default class Ship extends Mobile {
+
     protected static readonly MAX_TURNING_SPEED:number = 0.05;
 	protected static readonly TURNING_ACCELERATION_VALUE:number = 0.004;
 	protected static readonly BASE_MAX_SPEED:number = 5;
@@ -17,7 +18,7 @@ export default class Ship extends Mobile {
         down: false,
         left: false,
         right: false,
-        shoot: false
+        fire: false
     };
 
     constructor () {
@@ -28,24 +29,11 @@ export default class Ship extends Mobile {
         Object.assign(this.input, pInput);
     }
 
-    protected shoot ():void {
-        var lBullet:Bullet = new Bullet();
-		this.shootTimer = Ship.SHOOT_COOLDOWN;
-		lBullet.x = this.x;
-		lBullet.y = this.y;
-		lBullet.rotation = this.rotation;
-		lBullet.velocity.setTo(Bullet.SPEED * Math.cos(this.rotation), Bullet.SPEED * Math.sin(this.rotation));
-        lBullet.start();
-    }
-
-
-
-
     protected doActionNormal ():void {
 
         super.doActionNormal();
 
-        if (this.input.shoot && this.shootTimer == 0)
+        if (this.input.fire && this.shootTimer == 0)
 			this.shoot();
 		else if (this.shootTimer != 0)
 			this.shootTimer -= 1;
@@ -96,6 +84,16 @@ export default class Ship extends Mobile {
 				this.acceleration.y = Ship.SELF_BRAKE * -Math.sin(Math.atan2(this.velocity.y, this.velocity.x));
 			}
         }
+    }
+
+    protected shoot ():void {
+        var lBullet:Bullet = new Bullet();
+		this.shootTimer = Ship.SHOOT_COOLDOWN;
+		lBullet.x = this.x;
+		lBullet.y = this.y;
+		lBullet.rotation = this.rotation;
+		lBullet.velocity.setTo(Bullet.SPEED * Math.cos(this.rotation), Bullet.SPEED * Math.sin(this.rotation));
+        lBullet.start();
     }
 
 }

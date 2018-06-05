@@ -12,6 +12,7 @@ import GameObject from './../shared/gameobjects/GameObject';
 import Ship from '../shared/gameobjects/sprites/Ship';
 
 export default class Main {
+
     public static init ():void {
         PIXI.loader.add(textureAtlas).load(() => {
             KeyboardManager.init();
@@ -22,7 +23,7 @@ export default class Main {
                     down:KeyboardManager.down,
                     left:KeyboardManager.left,
                     right:KeyboardManager.right,
-                    shoot:KeyboardManager.space
+                    fire:KeyboardManager.space
                 });
                 NetworkManager.sendInputs(KeyboardManager);
             });
@@ -34,6 +35,7 @@ export default class Main {
             NetworkManager.init();
         });
     }
+
 }
 
 Main.init();

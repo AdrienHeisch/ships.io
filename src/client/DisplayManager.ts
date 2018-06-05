@@ -78,4 +78,5 @@ export default class DisplayManager {
     public static stop () {
         cancelAnimationFrame(this.animationFrame);
     }
+
 }

@@ -15,7 +15,9 @@ export default class NetworkManager {
 
     public static init ():void {
         this.socket = io.connect(window.location.href);
-        this.addListeners(this.socket);
+        
+        this.socket.on(Events.GameData, (pData:any) => GameObject.setData(pData));
+        this.socket.on(Events.Input, (pInput:ShipInput) => { if (GameObject.list[0]) (GameObject.list[0] as Ship).setInput(pInput); });
     
         this.pingInterval = window.setInterval(this.ping.bind(this), 1000 / config.pingFreq);
     }
@@ -36,11 +38,6 @@ export default class NetworkManager {
             this.pingSent
         });
         this.socket.emit(Events.Ping);
-    }
-
-    private static addListeners (pSocket:SocketIOClient.Socket):void {
-        pSocket.on(Events.GameData, (pData:any) => GameObject.setData(pData));
-        pSocket.on(Events.Input, (pInput:ShipInput) => { if (GameObject.list[0]) (GameObject.list[0] as Ship).setInput(pInput); });
     }
 
 }
